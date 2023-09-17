@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock and Weather</title>
+    <style>
+        /* Add your CSS styles here */
+        /* You can style the layout, fonts, colors, etc. */
+    </style>
+</head>
+<body>
+    <h1>World Clock and Weather</h1>
+    
+    <div class="city-container">
+        <div class="city">
+            <h2>Dhaka</h2>
+            <div class="time" id="dhaka-time"></div>
+            <div class="weather" id="dhaka-weather"></div>
+        </div>
+        
+        <div class="city">
+            <h2>California</h2>
+            <div class="time" id="california-time"></div>
+            <div class="weather" id="california-weather"></div>
+        </div>
+        
+        <div class="city">
+            <h2>Riyadh</h2>
+            <div class="time" id="riyadh-time"></div>
+            <div class="weather" id="riyadh-weather"></div>
+        </div>
+
+        <div class="city">
+            <h2>Kolkata</h2>
+            <div class="time" id="kolkata-time"></div>
+            <div class="weather" id="kolkata-weather"></div>
+        </div>
+
+        <div class="city">
+            <h2>Tokyo</h2>
+            <div class="time" id="tokyo-time"></div>
+            <div class="weather" id="tokyo-weather"></div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code to update time and weather for each city
+        function updateTimeAndWeather(cityId, latitude, longitude) {
+            const cityTimeElement = document.getElementById(cityId + '-time');
+            const cityWeatherElement = document.getElementById(cityId + '-weather');
+            const cityTimeZoneOffset = new Date().getTimezoneOffset() / 60; // Get local timezone offset in hours
+
+            // Replace 'cityTimeOffset' with the actual UTC offset of the city
+            const cityTimeOffset = 0; // Example: Dhaka is UTC+6
+            const currentTime = new Date().getUTCHours() + cityTimeOffset + cityTimeZoneOffset;
+            const currentMinutes = new Date().getUTCMinutes();
+
+            cityTimeElement.textContent = `Time: ${currentTime}:${currentMinutes < 10 ? '0' : ''}${currentMinutes}`;
+
+            // You can fetch weather data from a weather API here
+            // Example: fetchWeatherForCity(latitude, longitude).then(weather => cityWeatherElement.textContent = `Weather: ${weather}`);
+        }
+
+        // Call updateTimeAndWeather function for each city when the
